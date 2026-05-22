@@ -1,0 +1,28 @@
+<div class="tracker-container">
+  <h2>Laps: <%= lap_count %> / 123</h2>
+  
+  <div class="slug-grid top-slugs">
+    <% 103.times do |i| %>
+      <div class="slug-container">
+        <%= image_tag "slug.png", class: "slug-image" %>
+        <% if (i + 1) <= lap_count %>
+          <%= image_tag "cross.png", class: "cross-overlay" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <hr class="divider">
+
+  <div class="slug-grid bottom-slugs">
+    <% 20.times do |i| %>
+      <% lap_index = 103 + i + 1 %>
+      <div class="slug-container">
+        <%= image_tag "slug.png", class: "slug-image" %>
+        <% if lap_index <= lap_count %>
+          <%= image_tag "cross.png", class: "cross-overlay" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
