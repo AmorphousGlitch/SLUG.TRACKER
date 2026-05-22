@@ -1,23 +1,29 @@
-<h1 style="color: #e2e8f0; font-size: 2.5em; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px;">DUTCH ULTRASKATE 2026</h1>
-<h2 style="color: #a0aec0; margin-top: 0; margin-bottom: 30px; font-weight: normal;"><%= @user.username.capitalize %>'s Lap Progress</h2>
+<div class="page-header">
+  <h1 style="color: #e2e8f0; font-size: 2.5em; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px;">DUTCH ULTRASKATE 2026</h1>
+  <h2 style="color: #a0aec0; margin-top: 0; margin-bottom: 10px; font-weight: normal;"><%= @user.username.capitalize %>'s Lap Progress</h2>
 
-<div style="margin-bottom: 20px;">
-  <%= button_to "Log a Lap", log_lap_path, method: :post, class: "lap-button" %>
+  <div style="margin-bottom: 10px;">
+    <%= button_to "Log a Lap", log_lap_path, method: :post, class: "lap-button" %>
+  </div>
+
+  <h2 style="margin: 0 0 10px;">Laps: <%= @lap_count %></h2>
 </div>
 
-<%= render "shared/tracker", lap_count: @lap_count %>
+<div class="scroll-body">
+  <%= render "shared/tracker", lap_count: @lap_count %>
 
-<div class="secondary-actions">
-  <%= button_to "Undo Last Lap", undo_lap_path, method: :delete, class: "btn-secondary", form_class: "inline-form" %>
-  <%= button_to "Clear All (Wipe Slate)", clear_laps_path, method: :delete, class: "btn-danger", form_class: "inline-form", data: { turbo_confirm: "Are you sure you want to wipe the slate clean? This cannot be undone." } %>
-  <%= button_to "Archive Laps (Save for later)", archive_laps_path, method: :post, class: "btn-success", form_class: "inline-form", data: { turbo_confirm: "Are you sure you want to archive this progress and start a new slate?" } %>
-</div>
+  <div class="secondary-actions">
+    <%= button_to "Undo Last Lap", undo_lap_path, method: :delete, class: "btn-secondary", form_class: "inline-form" %>
+    <%= button_to "Clear All (Wipe Slate)", clear_laps_path, method: :delete, class: "btn-danger", form_class: "inline-form", data: { turbo_confirm: "Are you sure you want to wipe the slate clean? This cannot be undone." } %>
+    <%= button_to "Archive Laps (Save for later)", archive_laps_path, method: :post, class: "btn-success", form_class: "inline-form", data: { turbo_confirm: "Are you sure you want to archive this progress and start a new slate?" } %>
+  </div>
 
-<div class="share-link">
-  Share your progress: <br>
-  <%= link_to public_tracker_url(share_token: @user.share_token), public_tracker_url(share_token: @user.share_token), target: "_blank" %>
-</div>
+  <div class="share-link">
+    Share your progress: <br>
+    <%= link_to public_tracker_url(share_token: @user.share_token), public_tracker_url(share_token: @user.share_token), target: "_blank" %>
+  </div>
 
-<div style="margin-top: 50px;">
-  <%= button_to "Logout", logout_path, method: :delete, style: "background: #555; color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer;" %>
+  <div style="margin-top: 50px;">
+    <%= button_to "Logout", logout_path, method: :delete, style: "background: #555; color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer;" %>
+  </div>
 </div>

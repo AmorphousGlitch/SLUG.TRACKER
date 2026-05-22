@@ -1,4 +1,9 @@
-<h1 style="color: #e2e8f0; font-size: 2.5em; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px;">DUTCH ULTRASKATE 2026</h1>
-<h2 style="color: #a0aec0; margin-top: 0; margin-bottom: 30px; font-weight: normal;"><%= @user.username.capitalize %>'s Lap Progress</h2>
+<div class="page-header">
+  <h1 style="color: #e2e8f0; font-size: 2.5em; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px;">DUTCH ULTRASKATE 2026</h1>
+  <h2 style="color: #a0aec0; margin-top: 0; margin-bottom: 10px; font-weight: normal;"><%= @user.username.capitalize %>'s Lap Progress</h2>
+  <h2 style="margin: 0 0 10px;">Laps: <%= @lap_count %></h2>
+</div>
 
-<%= render "shared/tracker", lap_count: @lap_count %>
+<div class="scroll-body">
+  <%= render "shared/tracker", lap_count: @lap_count %>
+</div>
